@@ -13,6 +13,7 @@ import { Component } from '../lib/components/base/component.js';
 import { $getState, $setState, $shared } from '../lib/components/states/stateCollection.js';
 import { EventEmitter } from '../lib/events/events.js';
 import { MyPagePanel } from './pagePanelTest.js';
+import { Canvas } from '../lib/components/builtin/canvas.js';
 
 let alertPanelState: State = new State();
 let openButtonState: State = new State();
@@ -78,6 +79,14 @@ const app = new App([
 
     new Button("page panel", (me) => {
         me.app.appendChild(MyPagePanel())
+    }),
+    new Canvas((ctx, canvas) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * 20, Math.random() * 20);
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.stroke();
     })
 ]);
 
