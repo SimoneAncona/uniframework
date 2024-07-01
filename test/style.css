@@ -7,6 +7,28 @@
     transition: all 0.1s ease;
 }
 
+::-webkit-scrollbar {
+    height: 11px;
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white);
+    padding: 2px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border: 3px solid var(--white);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: var(--primary);
+}
+
 body {
     background-color: var(--white);
 }
@@ -39,6 +61,7 @@ body {
     flex-direction: row;
     column-gap: 5px;
     align-items: center;
+    overflow: auto;
 }
 
 .column {
@@ -46,6 +69,7 @@ body {
     flex-direction: column;
     row-gap: 5px;
     align-items: center;
+    overflow: auto;
 }
 
 
@@ -87,10 +111,36 @@ body {
     overflow: auto;
     border-radius: 3px;
     z-index: 200;
+    width: 40%;
+    height: 50%;
+    margin-top: 10%;
 }
 
 .alert {
     margin-top: 10%;
     width: 40%;
     height: 30%;
+}
+
+.pages > .row > .button {
+    font-size: 14px;
+    border: 1px solid var(--gray);
+    padding: 3px;
+    padding-inline: 5px;
+    border-bottom: none;
+    background-color: var(--lightgray);
+    border-radius: 4px 4px 0 0;
+}
+
+.pages > .row > .button:hover {
+    border: 1px solid var(--primary);
+    border-bottom: none;
+}
+
+.pages > .row > .button.active {
+    background-color: var(--gray);
+}
+
+.pages > .row {
+    column-gap: 2px;
 }

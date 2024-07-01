@@ -1,11 +1,20 @@
 import { App } from "../app.js";
 import { ComponentStorage } from "../../componentStorage.js";
 import { fadeOut } from "../../animations/fade.js";
+import { RGBA } from "../../colors.js";
+
 
 export type ComponentOptions = {
     title?: string,
     disableAnimations?: boolean,
-    fontSize?: string
+    fontSize?: string,
+    padding?: string,
+    margin?: string,
+    paddingInline?: string,
+    marginInline?: string,
+    contentColor?: RGBA,
+    backgroundColor?: RGBA,
+    additionalClassNames?: string[]
 }
 
 export const defaultOptions: ComponentOptions = {
@@ -104,5 +113,20 @@ export abstract class Component {
         if (this._options === null) return;
         if (this._options.fontSize) element.style.fontSize = this._options.fontSize;
         if (this._options.title) element.title = this._options.title;
+        if (this._options.margin) element.style.margin = this._options.margin;
+        if (this._options.marginInline) element.style.marginInline = this._options.marginInline;
+        if (this._options.padding) element.style.padding = this._options.padding;
+        if (this._options.paddingInline) element.style.paddingInline = this._options.paddingInline;
+        if (this._options.contentColor) element.style.color = this._options.contentColor.toCSS();
+        if (this._options.backgroundColor) element.style.color = this._options.backgroundColor.toCSS();
+        if (this._options.additionalClassNames) element.classList.add(...this._options.additionalClassNames);
+    }
+
+    addClass(name: string) {
+        this.getMyHTML().classList.add(name);
+    }
+
+    removeClass(name: string) {
+        this.getMyHTML().classList.remove(name);
     }
 }

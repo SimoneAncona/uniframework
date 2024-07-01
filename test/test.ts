@@ -12,6 +12,7 @@ import { GetState } from '../lib/components/states/getState.js';
 import { Component } from '../lib/components/base/component.js';
 import { $getState, $setState, $shared } from '../lib/components/states/stateCollection.js';
 import { EventEmitter } from '../lib/events/events.js';
+import { MyPagePanel } from './pagePanelTest.js';
 
 let alertPanelState: State = new State();
 let openButtonState: State = new State();
@@ -74,6 +75,10 @@ const app = new App([
 
     $shared(sharedState, "test1", new Button("test1", (me) => { me.text = me.storage.getState("test2").id})),
     $shared(sharedState, "test2", new Button("test2", (me) => { me.text = me.storage.getState("test1").id})),
+
+    new Button("page panel", (me) => {
+        me.app.appendChild(MyPagePanel())
+    })
 ]);
 
 console.log(sharedState);

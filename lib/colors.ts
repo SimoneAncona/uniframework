@@ -1,4 +1,4 @@
-class RGBA {
+export class RGBA {
     public r: number;
     public g: number;
     public b: number;
@@ -22,8 +22,8 @@ type Color = {
 
 export const defaultColors = {
     white: {light: new RGBA(250, 250, 250), dark: new RGBA(29, 30, 32)} as Color,
-    gray: {light: new RGBA(204, 204, 204), dark: new RGBA(80, 80, 80)} as Color,
-    lightGray: {light: new RGBA(243, 243, 243), dark: new RGBA(60, 60, 60)} as Color,
+    gray: {light: new RGBA(222, 222, 222), dark: new RGBA(80, 80, 80)} as Color,
+    lightGray: {light: new RGBA(245, 245, 246), dark: new RGBA(60, 60, 60)} as Color,
     black: {light: new RGBA(10, 10, 10), dark: new RGBA(253, 253, 253)} as Color,
     blue: {light: new RGBA(26, 172, 235), dark: new RGBA(23, 139, 189)} as Color,
     violet: {light: new RGBA(183, 127, 212), dark: new RGBA(130, 84, 153)} as Color,
