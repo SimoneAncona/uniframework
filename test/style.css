@@ -144,3 +144,66 @@ body {
 .pages > .row {
     column-gap: 2px;
 }
+
+.table {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
+
+.tablecolumn > * {
+    padding-inline: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.tablecolumn .header {
+    background: linear-gradient(var(--lightgray), var(--lightgray), var(--lightgray), var(--gray));
+    
+    border: 1px solid var(--gray);
+    border-right: none
+}
+
+.tablecolumn:first-child > .header {
+    border-radius: 5px 0 0 0;
+}
+
+.tablecolumn:first-child > * {
+    border-left: 1px solid var(--gray);
+}
+
+.tablecolumn:last-child > * {
+    border-right: 1px solid var(--gray);
+}
+
+
+.tablecolumn:last-child > .header {
+    border-radius: 0 5px 0 0;
+    border-right: 1px solid var(--gray);
+}
+
+.tablecolumn > :not(.header) {
+    border-bottom: 1px solid var(--gray)
+}
+
+.tablecolumn:first-child > *:last-child {
+    border-radius: 0 0 0 5px;
+}
+
+.tablecolumn:last-child > *:last-child {
+    border-radius: 0 0 5px 0;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.layout {
+    display: flex;
+}
+
+.footer {
+    border-top: 1px solid var(--gray);
+    padding: 10px;
+    width: 100%;
+}

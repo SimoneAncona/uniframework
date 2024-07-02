@@ -14,15 +14,55 @@ import { $getState, $setState, $shared } from '../lib/components/states/stateCol
 import { EventEmitter } from '../lib/events/events.js';
 import { MyPagePanel } from './pagePanelTest.js';
 import { Canvas } from '../lib/components/builtin/canvas.js';
+import { TextArea } from '../lib/components/builtin/textArea.js';
+import { Table } from '../lib/components/builtin/table.js';
+import { TableColumn } from '../lib/components/builtin/tableColumn.js';
+import { Fixed } from '../lib/components/layout/fixed.js';
+import { Footer } from '../lib/components/builtin/footer.js';
 
 let alertPanelState: State = new State();
 let openButtonState: State = new State();
 let sharedState: State = new State();
 
+const table = new Table(
+    [
+        new TableColumn("title1", new Text("test1")),
+        new TableColumn("title2", new Text("test2")),
+        new TableColumn("title3", new Text("test3")),
+        new TableColumn("title3", new Text("test3")),
+        new TableColumn("title3", new Text("test3")),
+        new TableColumn("title3", new Text("test3")),
+    ],
+    [
+        [
+            new Text("test1"),
+            new Text("test1"),
+            new Text("test1"),
+            new Text("test1"),
+            new Text("test1"),
+            new Text("test1"),
+        ],
+        [
+            new Text("test2"),
+            new Text("test2"),
+            new Text("test2"),
+            new Text("test2"),
+            new Text("test2"),
+            new Text("test2"),
+            new Text("test2"),
+        ],
+        [
+            new Text("test3"),
+            new Text("test3"),
+            new Text("test3"),
+        ],
+    ]
+)
+
 const app = new App([
     new NavBar(
         new Text("logo", ["event", (v) => {
-            alert("event captured " + v);
+            console.log("event captured " + v);
         }]),
         
         [
@@ -87,7 +127,16 @@ const app = new App([
         ctx.moveTo(Math.random() * 20, Math.random() * 20);
         ctx.lineTo(canvas.width, canvas.height);
         ctx.stroke();
-    })
+    }),
+    new TextArea("test", null),
+    table,
+    new Fixed(
+        [
+            new Footer([
+                new Text("ciao")
+            ])
+        ]
+    )
 ]);
 
 console.log(sharedState);

@@ -73,7 +73,7 @@ export abstract class Component {
         return document.getElementById(this.htmlId);
     }
 
-    _update() {
+    update() {
         let el = this.getMyHTML()
         el.innerText = this.text;
         el.title = this.title;
@@ -81,11 +81,11 @@ export abstract class Component {
 
     get text() { return this.innerText; }
 
-    set text(value: string) { this.innerText = value; this._update(); }
+    set text(value: string) { this.innerText = value; this.update(); }
 
     get title() { return this._options.title; }
 
-    set title(value: string) { this._options.title = value; this._update(); }
+    set title(value: string) { this._options.title = value; this.update(); }
 
     get id() { return this.htmlId; }
 
@@ -93,12 +93,12 @@ export abstract class Component {
 
     setStyle(propery: string, value: string) {
         this.getMyHTML().style.setProperty(propery, value);
-        this._update();
+        this.update();
     }
 
     setAttribute(propery: string, value: string) {
         this.getMyHTML().setAttribute(propery, value);
-        this._update();
+        this.update();
     }
 
     async remove() {

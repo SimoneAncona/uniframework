@@ -2,11 +2,13 @@ import { Container } from "../base/container.js";
 import { defaultOptions, Component, ComponentOptions, EventHandler } from "../base/component.js";
 
 export type LayoutOptions = {
+    justifyContent?: "left" | "center" | "right" | "fit"
     alignItems?: "left" | "center" | "right" | "fit",
     expanded?: boolean
 }
 
 export const defaultLayout: LayoutOptions = {
+    justifyContent: "left",
     alignItems: "left",
     expanded: true
 }
@@ -39,12 +41,20 @@ export abstract class Layout extends Container {
 
     protected applyLayout(el: HTMLElement) {
         if (this.layout === null) return;
-        switch (this.layout.alignItems) {
+        switch (this.layout.justifyContent) {
             case "left": el.style.justifyContent = "flex-start"; break;
             case "right": el.style.justifyContent = "flex-end"; break;
             case "center": el.style.justifyContent = "center"; break;
             case "fit": el.style.justifyContent = "space-between"; break;
         }
+
+        switch (this.layout.alignItems) {
+            case "left": el.style.alignItems = "flex-start"; break;
+            case "right": el.style.alignItems = "flex-end"; break;
+            case "center": el.style.alignItems = "center"; break;
+            case "fit": el.style.alignItems = "space-between"; break;
+        }
+
         if (this.layout.expanded) {
             el.style.height = "100%";
             el.style.width = "100%";

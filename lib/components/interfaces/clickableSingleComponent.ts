@@ -26,7 +26,7 @@ export abstract class ClickableSingleComponent extends SingleComponent {
         return button;
     }
 
-    _update() {
+    update() {
         let button = this.getMyHTML() as HTMLInputElement;
         button.value = this.innerText;
     }

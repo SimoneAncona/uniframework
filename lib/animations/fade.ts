@@ -1,3 +1,6 @@
+const freq = 0.4;
+let time = 20;
+
 export function fadeOut(element: HTMLElement) {
     return new Promise<void>(resolve => {
         let opacity: number;
@@ -7,13 +10,13 @@ export function fadeOut(element: HTMLElement) {
             opacity = Number.parseFloat(element.style.opacity);
         let interval = setInterval(() => {
             if (opacity > 0) {
-                opacity -= 0.2;
+                opacity -= freq;
                 element.style.setProperty("opacity", opacity.toString());
             } else {
                 clearInterval(interval);
                 resolve();
             }
-        }, 10);
+        }, time);
     });
 }
 
@@ -26,13 +29,13 @@ export function fadeIn(element: HTMLElement) {
             opacity = Number.parseFloat(element.style.opacity);
         let interval = setInterval(() => {
             if (opacity < 1) {
-                opacity += 0.2;
+                opacity += freq;
                 element.style.setProperty("opacity", opacity.toString());
             } else {
                 clearInterval(interval);
                 resolve();
             }
-        }, 10);
+        }, time);
     });
 }
 
@@ -41,13 +44,13 @@ export function fadeOutMultiple(...elements: HTMLElement[]) {
         let opacity = 1;
         let interval = setInterval(() => {
             if (opacity > 0) {
-                opacity -= 0.2;
+                opacity -= freq;
                 for (let el of elements)
                     el.style.setProperty("opacity", opacity.toString());
             } else {
                 clearInterval(interval);
                 resolve();
             }
-        }, 10);
+        }, time);
     });
 }

@@ -22,7 +22,7 @@ export class ComponentStorage {
         if (id.includes(":")) throw new Error("Invalid id");
         this._storage.set(id, value);
         try {
-            this._component._update();
+            this._component.update();
         } catch (e) {
             console.error("Component not attached to the DOM"); 
             return;
