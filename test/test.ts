@@ -118,7 +118,7 @@ const app = new App([
     $shared(sharedState, "test2", new Button("test2", (me) => { me.text = me.storage.getState("test1").id})),
 
     new Button("page panel", (me) => {
-        me.app.appendChild(MyPagePanel())
+        me.app.appendChild(new MyPagePanel())
     }),
     new Canvas((ctx, canvas) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
